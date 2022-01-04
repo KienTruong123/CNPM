@@ -9,3 +9,15 @@ C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSyste
 C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.exe
 C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.pdb
 C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ManageForm.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\bin\Debug\RiceAgentManageSystem.exe.config
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\bin\Debug\RiceAgentManageSystem.exe
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\bin\Debug\RiceAgentManageSystem.pdb
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.AssemblyReference.cache
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.SuggestedBindingRedirects.cache
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.LoginForm.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ManageForm.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Properties.Resources.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.GenerateResource.cache
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.CoreCompileInputs.cache
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.exe
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.pdb
