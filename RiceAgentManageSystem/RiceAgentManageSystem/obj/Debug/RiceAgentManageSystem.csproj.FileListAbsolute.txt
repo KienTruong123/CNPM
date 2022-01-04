@@ -1,0 +1,10 @@
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\bin\Debug\RiceAgentManageSystem.exe.config
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\bin\Debug\RiceAgentManageSystem.exe
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\bin\Debug\RiceAgentManageSystem.pdb
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.AssemblyReference.cache
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.SuggestedBindingRedirects.cache
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Properties.Resources.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.GenerateResource.cache
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.CoreCompileInputs.cache
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.exe
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.pdb

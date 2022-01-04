@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RiceAgentManageSystem
 {
-    public partial class Form1 : Form
+    public partial class ManageForm : Form
     {
-        public Form1()
+        public ManageForm()
         {
             InitializeComponent();
         }
