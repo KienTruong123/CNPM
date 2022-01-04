@@ -8,3 +8,4 @@ C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSyste
 C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.CoreCompileInputs.cache
 C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.exe
 C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.pdb
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ManageForm.resources
