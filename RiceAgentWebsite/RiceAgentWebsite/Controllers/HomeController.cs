@@ -1,32 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RiceAgentWebsite.Models;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace RiceAgentWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private RAMS_DBSEntities db = new RAMS_DBSEntities();
 
-        public HomeController(ILogger<HomeController> logger)
+        // GET: PRODUCTs
+        public ActionResult Index(string search, string category)
         {
-            _logger = logger;
+            if(category == null)
+                return View(db.PRODUCT.Where(x => x.PRODUCT_NAME.Contains(search) || search == null).ToList());
+            else
+                return View(db.PRODUCT.Where(x => x.PRODUCT_NAME.Contains(category)).ToList());
         }
 
-        public IActionResult Index()
+
+        public ActionResult CategorySearch()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public ActionResult Contact()
         {
-            return View();
-        }
+            ViewBag.Message = "Your contact page.";
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }

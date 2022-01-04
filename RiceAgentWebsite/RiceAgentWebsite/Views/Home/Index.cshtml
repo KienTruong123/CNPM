@@ -1,8 +1,112 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@model IEnumerable<RiceAgentWebsite.Controllers.PRODUCT>
+
+@{
+    ViewBag.Title = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container bootdey">
+    <div class="col-md-3">
+        <section class="panel">
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    @Html.TextBox("search") <input type="submit" value=" Search" />
+                }
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading">
+                Category
+            </header>
+          
+                <div class="panel-body">
+                    <ul class="nav prod-cat">
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i> </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        
+        </div>
+        <div class="col-md-9">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <ul class="pagination pagination-sm pro-page-list">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="row product-list">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="pro-img-box">
+                                <img src="@Html.DisplayFor(modelItem => item.IMG_PATH)" alt="" class="img-responsive" width="100%"
+                            </div>
+
+                            <div class="panel-body text-center">
+                                <h4>
+                                    <a href="#" class="pro-title">
+                                        @Html.DisplayFor(modelItem => item.PRODUCT_NAME)
+                                    </a>
+                                </h4>
+                                <p class="price"> @Html.DisplayFor(modelItem => item.PRICE) VND</p>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.PRODUCTID)"><i class="fa fa-search"></i>View Details</button>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal fade product_view" id="@Html.DisplayFor(modelItem => item.PRODUCTID)">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                                    <h3 class="modal-title">@Html.DisplayFor(modelItem => item.PRODUCT_NAME)</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6 product_img">
+                                            <img src="@Html.DisplayFor(modelItem => item.IMG_PATH)" alt="" class="img-responsive" width="100%">
+                                        </div>
+                                        <div class="col-md-6 product_content">
+
+
+                                            <h4>Product Id: <span>@Html.DisplayFor(modelItem => item.PRODUCTID)</span></h4>
+                                            <h3 class="cost"><span>Price: </span><span> @Html.DisplayFor(modelItem => item.PRICE) VND</span>  </h3>
+                                            <div class="row">
+                                                <!-- end col -->
+                                                <div class="col-md-4 col-sm-12">
+                                                    <input type="range" name="rangeInput1" min="0" max="@Html.DisplayFor(modelItem => item.QUANTITY)" onchange="updateTextInput(this.value, 'textInput1');">
+                                                    <input type="text" id="textInput1" value="">
+                                                </div>
+                                                <!-- end col -->
+                                            </div>
+                                            <div class="row">
+                                            </div>
+                                            <div class="btn-ground">
+                                                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateTextInput(val, elId) {
+            document.getElementById(elId).value = val;
+        }
+    </script>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f91fca52a31c4650a1af543bc334f66f" Name="Diagram1">
+        <EntityTypeShape EntityType="RAMS_DBSModel.ACCOUNT" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.BILL" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.BILL_PRODUCTS" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.BILL_TYPE" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.CART" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.CUSTOMER" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.PRODUCT" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.PRODUCT_TYPE" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.ROLE" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAMS_DBSModel.STAFF" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__CART__USERNAME__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__CUSTOMER__USERNA__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__STAFF__USERNAME__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__BILL__CUSTOMERID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__BILL__TYPEID__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__BILL_PROD__BILLI__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__BILL_PROD__PRODU__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.FK__CART__PRODUCTID__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.PRODUCT_PTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="RAMS_DBSModel.ROLE_ACCOUNT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
