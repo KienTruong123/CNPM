@@ -68,6 +68,7 @@ namespace RiceAgentManageSystem
 
                     if (uid.Equals("1"))
                     {
+                        Session.SessionRole = 1;
                         AdminForm f2 = new AdminForm();
                         this.Hide();
                         f2.ShowDialog();
@@ -75,6 +76,7 @@ namespace RiceAgentManageSystem
                     }
                     else if(uid.Equals("3"))
                     {
+                        Session.SessionRole = 3;
                         AccountantForm f3 = new AccountantForm();
                         this.Hide();
                         f3.ShowDialog();

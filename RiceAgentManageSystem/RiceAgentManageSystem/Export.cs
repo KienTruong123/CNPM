@@ -33,9 +33,19 @@ namespace RiceAgentManageSystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            AccountantForm f3 = new AccountantForm();
-            this.Hide();
-            f3.ShowDialog();
+            conn.Close();
+            if (Session.SessionRole == 3)
+            {
+                AccountantForm f3 = new AccountantForm();
+                this.Hide();
+                f3.ShowDialog();
+            }
+            else if (Session.SessionRole == 1)
+            {
+                AdminForm f3 = new AdminForm();
+                this.Hide();
+                f3.ShowDialog();
+            }
             this.Close();
         }
         private void LoadData()
@@ -74,20 +84,15 @@ namespace RiceAgentManageSystem
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            if (dt.Rows.Count > 0)
-            {
-                gridBill.DataSource = dt;
-            }
-            else
-            {
-                MessageBox.Show("No Data");
-            }
+
+            gridBill.DataSource = dt;
             adapter.Dispose();
             LoadData();
         }
 
         private void Export_Load(object sender, EventArgs e)
         {
+            conn.Open();
             LoadBill();
         }
 
@@ -98,7 +103,45 @@ namespace RiceAgentManageSystem
 
         private void btnExportBill_Click(object sender, EventArgs e)
         {
+            int index = gridDetail.SelectedCells[0].RowIndex;
+            DataGridViewRow row = gridDetail.Rows[index];
+            int bid = int.Parse(row.Cells[0].Value.ToString());
 
+
+            //conn.Open();
+            SqlCommand cmd = new SqlCommand("update  BILL set STATUS='Delivery' where BILLID=@bid", conn);
+
+            SqlParameter param4 = new SqlParameter("@bid", bid);
+
+            SqlParameter[] parameters = {param4 }; // you may add more params
+
+            cmd.Parameters.AddRange(parameters);
+            int rows = cmd.ExecuteNonQuery();
+
+            gridDetail.ClearSelection();
+            LoadBill();
+        }
+
+        private void btnClosed_Click(object sender, EventArgs e)
+        {
+
+            int index = gridDetail.SelectedCells[0].RowIndex;
+            DataGridViewRow row = gridDetail.Rows[index];
+            int bid = int.Parse(row.Cells[0].Value.ToString());
+
+
+            //conn.Open();
+            SqlCommand cmd = new SqlCommand("update  BILL set STATUS='Complete', DATE_CLOSED= GETDATE() where BILLID=@bid", conn);
+
+            SqlParameter param4 = new SqlParameter("@bid", bid);
+
+            SqlParameter[] parameters = { param4 }; // you may add more params
+
+            cmd.Parameters.AddRange(parameters);
+            int rows = cmd.ExecuteNonQuery();
+
+            gridDetail.ClearSelection();
+            LoadBill();
         }
     }
 }

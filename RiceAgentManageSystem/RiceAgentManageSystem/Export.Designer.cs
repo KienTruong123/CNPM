@@ -98,6 +98,7 @@
             this.btnClosed.TabIndex = 21;
             this.btnClosed.Text = "Mark Bill is Completed";
             this.btnClosed.UseVisualStyleBackColor = true;
+            this.btnClosed.Click += new System.EventHandler(this.btnClosed_Click);
             // 
             // Export
             // 

@@ -24,10 +24,20 @@ namespace RiceAgentManageSystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+
             conn.Close();
-            AccountantForm f3 = new AccountantForm();
-            this.Hide();
-            f3.ShowDialog();
+            if(Session.SessionRole == 3)
+            {
+                AccountantForm f3 = new AccountantForm();
+                this.Hide();
+                f3.ShowDialog();
+            }
+            else if(Session.SessionRole == 1)
+            {
+                AdminForm f3 = new AdminForm();
+                this.Hide();
+                f3.ShowDialog();
+            }
             this.Close();
         }
 

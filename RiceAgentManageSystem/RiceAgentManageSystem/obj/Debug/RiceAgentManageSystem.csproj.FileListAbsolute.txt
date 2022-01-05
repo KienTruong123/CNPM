@@ -26,3 +26,5 @@ D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSys
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Import.resources
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Export.resources
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ProductForm.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Statistic.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.StaffManage.resources
