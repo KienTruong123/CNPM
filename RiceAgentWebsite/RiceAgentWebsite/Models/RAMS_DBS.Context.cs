@@ -29,6 +29,7 @@ namespace RiceAgentWebsite.Models
         public virtual DbSet<BILL> BILL { get; set; }
         public virtual DbSet<BILL_PRODUCTS> BILL_PRODUCTS { get; set; }
         public virtual DbSet<BILL_TYPE> BILL_TYPE { get; set; }
+        public virtual DbSet<CART> CART { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMER { get; set; }
         public virtual DbSet<PRODUCT> PRODUCT { get; set; }
         public virtual DbSet<PRODUCT_TYPE> PRODUCT_TYPE { get; set; }

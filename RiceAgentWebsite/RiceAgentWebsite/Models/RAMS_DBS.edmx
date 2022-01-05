@@ -41,6 +41,15 @@
           <Property Name="TYPEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TYPE_NAME" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PRODUCTID" />
+          </Key>
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRODUCTID" Type="int" Nullable="false" />
+          <Property Name="QUANTITY" Type="int" />
+        </EntityType>
         <EntityType Name="CUSTOMER">
           <Key>
             <PropertyRef Name="CUSTOMERID" />
@@ -152,6 +161,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CART__PRODUCTID__5DCAEF64">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="CART" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCTID" />
+            </Principal>
+            <Dependent Role="CART">
+              <PropertyRef Name="PRODUCTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CART__USERNAME__5CD6CB2B">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="CART" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="CART">
+              <PropertyRef Name="USERNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CUSTOMER__USERNA__3E52440B">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
@@ -229,6 +262,7 @@
           <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BILL_PRODUCTS" EntityType="Self.BILL_PRODUCTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BILL_TYPE" EntityType="Self.BILL_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CART" EntityType="Self.CART" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCT_PTYPE" EntityType="Self.PRODUCT_PTYPE" Schema="dbo" store:Type="Tables" />
@@ -251,6 +285,14 @@
           <AssociationSet Name="FK__BILL_PROD__PRODU__534D60F1" Association="Self.FK__BILL_PROD__PRODU__534D60F1">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="BILL_PRODUCTS" EntitySet="BILL_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CART__PRODUCTID__5DCAEF64" Association="Self.FK__CART__PRODUCTID__5DCAEF64">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="CART" EntitySet="CART" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CART__USERNAME__5CD6CB2B" Association="Self.FK__CART__USERNAME__5CD6CB2B">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="CART" EntitySet="CART" />
           </AssociationSet>
           <AssociationSet Name="FK__CUSTOMER__USERNA__3E52440B" Association="Self.FK__CUSTOMER__USERNA__3E52440B">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -288,6 +330,7 @@
           </Key>
           <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CART" Relationship="Self.FK__CART__USERNAME__5CD6CB2B" FromRole="ACCOUNT" ToRole="CART" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__CUSTOMER__USERNA__3E52440B" FromRole="ACCOUNT" ToRole="CUSTOMER" />
           <NavigationProperty Name="STAFF" Relationship="Self.FK__STAFF__USERNAME__48CFD27E" FromRole="ACCOUNT" ToRole="STAFF" />
           <NavigationProperty Name="ROLE" Relationship="Self.ROLE_ACCOUNT" FromRole="ACCOUNT" ToRole="ROLE" />
@@ -327,6 +370,17 @@
           <Property Name="TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BILL" Relationship="Self.FK__BILL__TYPEID__4F7CD00D" FromRole="BILL_TYPE" ToRole="BILL" />
         </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PRODUCTID" />
+          </Key>
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCTID" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__CART__USERNAME__5CD6CB2B" FromRole="CART" ToRole="ACCOUNT" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__CART__PRODUCTID__5DCAEF64" FromRole="CART" ToRole="PRODUCT" />
+        </EntityType>
         <EntityType Name="CUSTOMER">
           <Key>
             <PropertyRef Name="CUSTOMERID" />
@@ -353,6 +407,7 @@
           <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IMG_PATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BILL_PRODUCTS" Relationship="Self.FK__BILL_PROD__PRODU__534D60F1" FromRole="PRODUCT" ToRole="BILL_PRODUCTS" />
+          <NavigationProperty Name="CART" Relationship="Self.FK__CART__PRODUCTID__5DCAEF64" FromRole="PRODUCT" ToRole="CART" />
           <NavigationProperty Name="PRODUCT_TYPE" Relationship="Self.PRODUCT_PTYPE" FromRole="PRODUCT" ToRole="PRODUCT_TYPE" />
         </EntityType>
         <EntityType Name="PRODUCT_TYPE">
@@ -381,6 +436,18 @@
           <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__STAFF__USERNAME__48CFD27E" FromRole="STAFF" ToRole="ACCOUNT" />
         </EntityType>
+        <Association Name="FK__CART__USERNAME__5CD6CB2B">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="CART" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="CART">
+              <PropertyRef Name="USERNAME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CUSTOMER__USERNA__3E52440B">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
@@ -453,6 +520,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CART__PRODUCTID__5DCAEF64">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="CART" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCTID" />
+            </Principal>
+            <Dependent Role="CART">
+              <PropertyRef Name="PRODUCTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PRODUCT_PTYPE">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <End Role="PRODUCT_TYPE" Type="Self.PRODUCT_TYPE" Multiplicity="*" />
@@ -466,11 +545,16 @@
           <EntitySet Name="BILL" EntityType="Self.BILL" />
           <EntitySet Name="BILL_PRODUCTS" EntityType="Self.BILL_PRODUCTS" />
           <EntitySet Name="BILL_TYPE" EntityType="Self.BILL_TYPE" />
+          <EntitySet Name="CART" EntityType="Self.CART" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" />
           <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" />
           <EntitySet Name="PRODUCT_TYPE" EntityType="Self.PRODUCT_TYPE" />
           <EntitySet Name="ROLE" EntityType="Self.ROLE" />
           <EntitySet Name="STAFF" EntityType="Self.STAFF" />
+          <AssociationSet Name="FK__CART__USERNAME__5CD6CB2B" Association="Self.FK__CART__USERNAME__5CD6CB2B">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="CART" EntitySet="CART" />
+          </AssociationSet>
           <AssociationSet Name="FK__CUSTOMER__USERNA__3E52440B" Association="Self.FK__CUSTOMER__USERNA__3E52440B">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
@@ -494,6 +578,10 @@
           <AssociationSet Name="FK__BILL_PROD__PRODU__534D60F1" Association="Self.FK__BILL_PROD__PRODU__534D60F1">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="BILL_PRODUCTS" EntitySet="BILL_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CART__PRODUCTID__5DCAEF64" Association="Self.FK__CART__PRODUCTID__5DCAEF64">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="CART" EntitySet="CART" />
           </AssociationSet>
           <AssociationSet Name="PRODUCT_PTYPE" Association="Self.PRODUCT_PTYPE">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
@@ -546,6 +634,15 @@
               <MappingFragment StoreEntitySet="BILL_TYPE">
                 <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
                 <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CART">
+            <EntityTypeMapping TypeName="RAMS_DBSModel.CART">
+              <MappingFragment StoreEntitySet="CART">
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

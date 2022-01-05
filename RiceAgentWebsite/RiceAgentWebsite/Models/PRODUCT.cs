@@ -18,6 +18,7 @@ namespace RiceAgentWebsite.Models
         public PRODUCT()
         {
             this.BILL_PRODUCTS = new HashSet<BILL_PRODUCTS>();
+            this.CART = new HashSet<CART>();
             this.PRODUCT_TYPE = new HashSet<PRODUCT_TYPE>();
         }
     
@@ -32,6 +33,8 @@ namespace RiceAgentWebsite.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL_PRODUCTS> BILL_PRODUCTS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CART> CART { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT_TYPE> PRODUCT_TYPE { get; set; }
     }

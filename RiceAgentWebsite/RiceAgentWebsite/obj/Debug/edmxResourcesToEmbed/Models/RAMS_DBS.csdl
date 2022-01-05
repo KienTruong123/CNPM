@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RAMS_DBSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACCOUNT">
+    <Key>
+      <PropertyRef Name="USERNAME" />
+    </Key>
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CART" Relationship="Self.FK__CART__USERNAME__5CD6CB2B" FromRole="ACCOUNT" ToRole="CART" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__CUSTOMER__USERNA__3E52440B" FromRole="ACCOUNT" ToRole="CUSTOMER" />
+    <NavigationProperty Name="STAFF" Relationship="Self.FK__STAFF__USERNAME__48CFD27E" FromRole="ACCOUNT" ToRole="STAFF" />
+    <NavigationProperty Name="ROLE" Relationship="Self.ROLE_ACCOUNT" FromRole="ACCOUNT" ToRole="ROLE" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILLID" />
+    </Key>
+    <Property Name="BILLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMERID" Type="Int32" />
+    <Property Name="STATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DATE_CREATED" Type="DateTime" Precision="0" />
+    <Property Name="DATE_CLOSED" Type="DateTime" Precision="0" />
+    <Property Name="PAYMENT_METHOD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TYPEID" Type="Int32" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__BILL__CUSTOMERID__4D94879B" FromRole="BILL" ToRole="CUSTOMER" />
+    <NavigationProperty Name="BILL_TYPE" Relationship="Self.FK__BILL__TYPEID__4F7CD00D" FromRole="BILL" ToRole="BILL_TYPE" />
+    <NavigationProperty Name="BILL_PRODUCTS" Relationship="Self.FK__BILL_PROD__BILLI__52593CB8" FromRole="BILL" ToRole="BILL_PRODUCTS" />
+  </EntityType>
+  <EntityType Name="BILL_PRODUCTS">
+    <Key>
+      <PropertyRef Name="BILLID" />
+      <PropertyRef Name="PRODUCTID" />
+    </Key>
+    <Property Name="BILLID" Type="Int32" Nullable="false" />
+    <Property Name="PRODUCTID" Type="Int32" Nullable="false" />
+    <Property Name="PRICE" Type="Int32" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <NavigationProperty Name="BILL" Relationship="Self.FK__BILL_PROD__BILLI__52593CB8" FromRole="BILL_PRODUCTS" ToRole="BILL" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__BILL_PROD__PRODU__534D60F1" FromRole="BILL_PRODUCTS" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="BILL_TYPE">
+    <Key>
+      <PropertyRef Name="TYPEID" />
+    </Key>
+    <Property Name="TYPEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BILL" Relationship="Self.FK__BILL__TYPEID__4F7CD00D" FromRole="BILL_TYPE" ToRole="BILL" />
+  </EntityType>
+  <EntityType Name="CART">
+    <Key>
+      <PropertyRef Name="USERNAME" />
+      <PropertyRef Name="PRODUCTID" />
+    </Key>
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRODUCTID" Type="Int32" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__CART__USERNAME__5CD6CB2B" FromRole="CART" ToRole="ACCOUNT" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__CART__PRODUCTID__5DCAEF64" FromRole="CART" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="CUSTOMERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LOCATION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__CUSTOMER__USERNA__3E52440B" FromRole="CUSTOMER" ToRole="ACCOUNT" />
+    <NavigationProperty Name="BILL" Relationship="Self.FK__BILL__CUSTOMERID__4D94879B" FromRole="CUSTOMER" ToRole="BILL" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="PRODUCTID" />
+    </Key>
+    <Property Name="PRODUCTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="PRICE" Type="Int32" />
+    <Property Name="BRAND" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WEIGHT" Type="Int32" />
+    <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IMG_PATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BILL_PRODUCTS" Relationship="Self.FK__BILL_PROD__PRODU__534D60F1" FromRole="PRODUCT" ToRole="BILL_PRODUCTS" />
+    <NavigationProperty Name="CART" Relationship="Self.FK__CART__PRODUCTID__5DCAEF64" FromRole="PRODUCT" ToRole="CART" />
+    <NavigationProperty Name="PRODUCT_TYPE" Relationship="Self.PRODUCT_PTYPE" FromRole="PRODUCT" ToRole="PRODUCT_TYPE" />
+  </EntityType>
+  <EntityType Name="PRODUCT_TYPE">
+    <Key>
+      <PropertyRef Name="TYPEID" />
+    </Key>
+    <Property Name="TYPEID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TYPENAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.PRODUCT_PTYPE" FromRole="PRODUCT_TYPE" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ROLEID" />
+    </Key>
+    <Property Name="ROLEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLENAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.ROLE_ACCOUNT" FromRole="ROLE" ToRole="ACCOUNT" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="STAFFID" />
+    </Key>
+    <Property Name="STAFFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FULLNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__STAFF__USERNAME__48CFD27E" FromRole="STAFF" ToRole="ACCOUNT" />
+  </EntityType>
+  <Association Name="FK__CART__USERNAME__5CD6CB2B">
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+    <End Role="CART" Type="Self.CART" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT">
+        <PropertyRef Name="USERNAME" />
+      </Principal>
+      <Dependent Role="CART">
+        <PropertyRef Name="USERNAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CUSTOMER__USERNA__3E52440B">
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT">
+        <PropertyRef Name="USERNAME" />
+      </Principal>
+      <Dependent Role="CUSTOMER">
+        <PropertyRef Name="USERNAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__STAFF__USERNAME__48CFD27E">
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+    <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT">
+        <PropertyRef Name="USERNAME" />
+      </Principal>
+      <Dependent Role="STAFF">
+        <PropertyRef Name="USERNAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__CUSTOMERID__4D94879B">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUSTOMERID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="CUSTOMERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__TYPEID__4F7CD00D">
+    <End Role="BILL_TYPE" Type="Self.BILL_TYPE" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL_TYPE">
+        <PropertyRef Name="TYPEID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="TYPEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL_PROD__BILLI__52593CB8">
+    <End Role="BILL" Type="Self.BILL" Multiplicity="1" />
+    <End Role="BILL_PRODUCTS" Type="Self.BILL_PRODUCTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL">
+        <PropertyRef Name="BILLID" />
+      </Principal>
+      <Dependent Role="BILL_PRODUCTS">
+        <PropertyRef Name="BILLID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL_PROD__PRODU__534D60F1">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="BILL_PRODUCTS" Type="Self.BILL_PRODUCTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRODUCTID" />
+      </Principal>
+      <Dependent Role="BILL_PRODUCTS">
+        <PropertyRef Name="PRODUCTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CART__PRODUCTID__5DCAEF64">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+    <End Role="CART" Type="Self.CART" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRODUCTID" />
+      </Principal>
+      <Dependent Role="CART">
+        <PropertyRef Name="PRODUCTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PRODUCT_PTYPE">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <End Role="PRODUCT_TYPE" Type="Self.PRODUCT_TYPE" Multiplicity="*" />
+  </Association>
+  <Association Name="ROLE_ACCOUNT">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="*" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="RAMS_DBSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" />
+    <EntitySet Name="BILL" EntityType="Self.BILL" />
+    <EntitySet Name="BILL_PRODUCTS" EntityType="Self.BILL_PRODUCTS" />
+    <EntitySet Name="BILL_TYPE" EntityType="Self.BILL_TYPE" />
+    <EntitySet Name="CART" EntityType="Self.CART" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" />
+    <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" />
+    <EntitySet Name="PRODUCT_TYPE" EntityType="Self.PRODUCT_TYPE" />
+    <EntitySet Name="ROLE" EntityType="Self.ROLE" />
+    <EntitySet Name="STAFF" EntityType="Self.STAFF" />
+    <AssociationSet Name="FK__CART__USERNAME__5CD6CB2B" Association="Self.FK__CART__USERNAME__5CD6CB2B">
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+      <End Role="CART" EntitySet="CART" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CUSTOMER__USERNA__3E52440B" Association="Self.FK__CUSTOMER__USERNA__3E52440B">
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__STAFF__USERNAME__48CFD27E" Association="Self.FK__STAFF__USERNAME__48CFD27E">
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+      <End Role="STAFF" EntitySet="STAFF" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__CUSTOMERID__4D94879B" Association="Self.FK__BILL__CUSTOMERID__4D94879B">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__TYPEID__4F7CD00D" Association="Self.FK__BILL__TYPEID__4F7CD00D">
+      <End Role="BILL_TYPE" EntitySet="BILL_TYPE" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL_PROD__BILLI__52593CB8" Association="Self.FK__BILL_PROD__BILLI__52593CB8">
+      <End Role="BILL" EntitySet="BILL" />
+      <End Role="BILL_PRODUCTS" EntitySet="BILL_PRODUCTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL_PROD__PRODU__534D60F1" Association="Self.FK__BILL_PROD__PRODU__534D60F1">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="BILL_PRODUCTS" EntitySet="BILL_PRODUCTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CART__PRODUCTID__5DCAEF64" Association="Self.FK__CART__PRODUCTID__5DCAEF64">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="CART" EntitySet="CART" />
+    </AssociationSet>
+    <AssociationSet Name="PRODUCT_PTYPE" Association="Self.PRODUCT_PTYPE">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="PRODUCT_TYPE" EntitySet="PRODUCT_TYPE" />
+    </AssociationSet>
+    <AssociationSet Name="ROLE_ACCOUNT" Association="Self.ROLE_ACCOUNT">
+      <End Role="ROLE" EntitySet="ROLE" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

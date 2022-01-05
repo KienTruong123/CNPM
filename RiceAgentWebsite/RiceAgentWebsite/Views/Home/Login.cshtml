@@ -1,0 +1,49 @@
+﻿@model RiceAgentWebsite.Models.ACCOUNT
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sign In</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                  
+                <fieldset>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @if (@ViewBag.Message != null)
+                    {
+                        <div style="border: 1px solid red">
+                            @ViewBag.Message
+                        </div>
+                    }
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.USERNAME, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.USERNAME)
+          
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.PASSWORD, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PASSWORD)
+                </div>
+                <input type="submit" class="btn btn-sm btn-success" value="Login" />
+                 
+                </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+    
+
+  

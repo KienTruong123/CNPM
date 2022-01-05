@@ -17,6 +17,7 @@ namespace RiceAgentWebsite.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ACCOUNT()
         {
+            this.CART = new HashSet<CART>();
             this.CUSTOMER = new HashSet<CUSTOMER>();
             this.STAFF = new HashSet<STAFF>();
             this.ROLE = new HashSet<ROLE>();
@@ -25,6 +26,8 @@ namespace RiceAgentWebsite.Models
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CART> CART { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER> CUSTOMER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
