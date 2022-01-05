@@ -20,3 +20,8 @@ D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSys
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.csproj.CoreCompileInputs.cache
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.exe
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.pdb
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.AccountantForm.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.AdminForm.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Import.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Export.resources
+D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ProductForm.resources
