@@ -9,29 +9,34 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Rice Agent System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (Session["UserName"] != null)
+                {
+
+                    <li> @Html.ActionLink("My cart", "MyCart", "Home", new { @username = @Session["UserName"] }, new { }) </li>
+                    <li> <span class="glyphicon glyphicon-shopping-cart"> </span></li>
+                    <li>@Html.ActionLink("Logout", "LogOut", "Home") </li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Home") </li>
+                    <li> <span class="glyphicon glyphicon-log-in"> </span> </li>
+                }
+            </ul>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Truong Dinh Kien - Tran Si Nguyen</p>
         </footer>
     </div>
 

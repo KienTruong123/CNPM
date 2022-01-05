@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6BEDD5ED-6646-4F83-AE84-1274B66CBE27}</ProjectGuid>
+    <ProjectGuid>{0E795A18-36BA-4AC3-91CA-4E0D983D043E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44302</IISExpressSSLPort>
+    <IISExpressSSLPort>44355</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -129,55 +129,57 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ACCOUNT.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\BILL.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\BILL_PRODUCTS.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\BILL_TYPE.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\CART.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\CUSTOMER.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\ACCOUNTsController.cs" />
+    <Compile Include="Controllers\CARTsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PRODUCT.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\PRODUCTsController.cs" />
-    <Compile Include="Controllers\PRODUCT_TYPE.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\RAMS_ADO.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RAMS_ADO.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\RAMS_ADO.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\RAMS_ADO.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RAMS_ADO.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\ROLE.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\STAFF.cs">
-      <DependentUpon>RAMS_ADO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACCOUNT.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BILL.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BILL_PRODUCTS.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BILL_TYPE.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CART.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CUSTOMER.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRODUCT.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRODUCT_TYPE.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RAMS_DBS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RAMS_DBS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RAMS_DBS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RAMS_DBS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RAMS_DBS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROLE.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STAFF.cs">
+      <DependentUpon>RAMS_DBS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -191,28 +193,28 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Controllers\RAMS_ADO.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RAMS_ADO.Context.cs</LastGenOutput>
-      <DependentUpon>RAMS_ADO.edmx</DependentUpon>
-    </Content>
-    <Content Include="Controllers\RAMS_ADO.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RAMS_ADO.edmx</DependentUpon>
-      <LastGenOutput>RAMS_ADO.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\RAMS_DBS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RAMS_DBS.Context.cs</LastGenOutput>
+      <DependentUpon>RAMS_DBS.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\RAMS_DBS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RAMS_DBS.edmx</DependentUpon>
+      <LastGenOutput>RAMS_DBS.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Controllers\RAMS_ADO.edmx">
+    <EntityDeploy Include="Models\RAMS_DBS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RAMS_ADO.Designer.cs</LastGenOutput>
+      <LastGenOutput>RAMS_DBS.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Controllers\RAMS_ADO.edmx.diagram">
-      <DependentUpon>RAMS_ADO.edmx</DependentUpon>
+    <Content Include="Models\RAMS_DBS.edmx.diagram">
+      <DependentUpon>RAMS_DBS.edmx</DependentUpon>
     </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -248,10 +250,21 @@
     <Content Include="Views\PRODUCTs\Details.cshtml" />
     <Content Include="Views\PRODUCTs\Edit.cshtml" />
     <Content Include="Views\PRODUCTs\Index.cshtml" />
+    <Content Include="Views\CARTs\Create.cshtml" />
+    <Content Include="Views\CARTs\Delete.cshtml" />
+    <Content Include="Views\CARTs\Details.cshtml" />
+    <Content Include="Views\CARTs\Edit.cshtml" />
+    <Content Include="Views\CARTs\Index.cshtml" />
+    <Content Include="Views\ACCOUNTs\Create.cshtml" />
+    <Content Include="Views\ACCOUNTs\Delete.cshtml" />
+    <Content Include="Views\ACCOUNTs\Details.cshtml" />
+    <Content Include="Views\ACCOUNTs\Edit.cshtml" />
+    <Content Include="Views\ACCOUNTs\Index.cshtml" />
+    <Content Include="Views\Home\MyCart.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -285,9 +298,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61224</DevelopmentServerPort>
+          <DevelopmentServerPort>51090</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44302/</IISUrl>
+          <IISUrl>https://localhost:44355/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

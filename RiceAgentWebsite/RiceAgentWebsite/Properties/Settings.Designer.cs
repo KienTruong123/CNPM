@@ -28,9 +28,9 @@ namespace RiceAgentWebsite.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\nguyen\\Documents\\Git" +
             "Hub\\CNPM\\RAMS_DBS.mdf;Integrated Security=True;Connect Timeout=30")]
-        public string StringConn {
+        public string ConString {
             get {
-                return ((string)(this["StringConn"]));
+                return ((string)(this["ConString"]));
             }
         }
     }

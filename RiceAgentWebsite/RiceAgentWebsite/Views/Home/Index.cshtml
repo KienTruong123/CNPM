@@ -1,26 +1,43 @@
 ﻿
-@model IEnumerable<RiceAgentWebsite.Controllers.PRODUCT>
-
+@model RiceAgentWebsite.Models.CART
+@using RiceAgentWebsite.Controllers;
+@{
+    IEnumerable<RiceAgentWebsite.Models.PRODUCT> products = ViewData["PRODUCTs"] as IEnumerable<RiceAgentWebsite.Models.PRODUCT>;
+    RiceAgentWebsite.Models.CART cart = ViewData["CARTs"] as RiceAgentWebsite.Models.CART;
+}
 @{
     ViewBag.Title = "Index";
 }
 
 <div class="container bootdey">
-    <div class="col-md-3">
-        <section class="panel">
-            <div class="panel-body">
+    <div class="row">
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-3">
+            <section class="panel">
+                <div class="panel-body">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <div class="input-group">
+                            @Html.TextBox("search", null, new { @class = "form-control" })
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <section class="panel">
+                <header class="panel-heading">
+                    Category
+                </header>
 
-                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                {
-                    @Html.TextBox("search") <input type="submit" value=" Search" />
-                }
-            </div>
-        </section>
-        <section class="panel">
-            <header class="panel-heading">
-                Category
-            </header>
-          
                 <div class="panel-body">
                     <ul class="nav prod-cat">
                         <li>
@@ -29,29 +46,15 @@
                     </ul>
                 </div>
             </section>
-        
         </div>
         <div class="col-md-9">
-            <section class="panel">
-                <div class="panel-body">
-                    <div class="pull-right">
-                        <ul class="pagination pagination-sm pro-page-list">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">»</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
             <div class="row product-list">
-                @foreach (var item in Model)
+                @foreach (var item in products)
                 {
                     <div class="col-md-4">
                         <section class="panel">
                             <div class="pro-img-box">
-                                <img src="@Html.DisplayFor(modelItem => item.IMG_PATH)" alt="" class="img-responsive" width="100%"
+                                <img src="@Html.DisplayFor(modelItem => item.IMG_PATH)" alt="" class="img-responsive" />
                             </div>
 
                             <div class="panel-body text-center">
@@ -65,48 +68,61 @@
                             </div>
                         </section>
                     </div>
-                    <div class="modal fade product_view" id="@Html.DisplayFor(modelItem => item.PRODUCTID)">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                                    <h3 class="modal-title">@Html.DisplayFor(modelItem => item.PRODUCT_NAME)</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-6 product_img">
-                                            <img src="@Html.DisplayFor(modelItem => item.IMG_PATH)" alt="" class="img-responsive" width="100%">
-                                        </div>
-                                        <div class="col-md-6 product_content">
+                    using (Html.BeginForm("Create", "CARTs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                      
+                        <div class="modal fade product_view" id="@Html.DisplayFor(modelItem => item.PRODUCTID)">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <h3 class="modal-title">@Html.DisplayFor(modelItem => item.PRODUCT_NAME)</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6 product_img">
+                                                <img src="@Html.DisplayFor(modelItem => item.IMG_PATH)" alt="" class="img-responsive">
+                                            </div>
+                                            <div class="col-md-6 product_content">
 
 
-                                            <h4>Product Id: <span>@Html.DisplayFor(modelItem => item.PRODUCTID)</span></h4>
-                                            <h3 class="cost"><span>Price: </span><span> @Html.DisplayFor(modelItem => item.PRICE) VND</span>  </h3>
-                                            <div class="row">
-                                                <!-- end col -->
-                                                <div class="col-md-4 col-sm-12">
-                                                    <input type="range" name="rangeInput1" min="0" max="@Html.DisplayFor(modelItem => item.QUANTITY)" onchange="updateTextInput(this.value, 'textInput1');">
-                                                    <input type="text" id="textInput1" value="">
+                                                <h4>Product Id: <span>@Html.DisplayFor(modelItem => item.PRODUCTID)</span></h4>
+                                                <h3 class="cost"><span>Price: </span><span> @Html.DisplayFor(modelItem => item.PRICE) VND</span>  </h3>
+                                                <div class="row">
+                                                    <!-- end col -->
+                                                    <div class="col-md-4 col-sm-12">
+
+                                                        @Html.EditorFor(model => model.QUANTITY, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @max = "@Html.DisplayFor(modelItem => item.QUANTITY)" } })
+                                                        @Html.ValidationMessageFor(model => model.QUANTITY, "", new { @class = "text-danger" })
+                                                        @Html.HiddenFor(model => model.USERNAME, new { @Value = Session["UserName"] })
+                                                        @Html.HiddenFor(model => model.PRODUCTID, new { @Value = item.PRODUCTID })
+                                                    </div>
+                                                    <!-- end col -->
                                                 </div>
-                                                <!-- end col -->
-                                            </div>
-                                            <div class="row">
-                                            </div>
-                                            <div class="btn-ground">
-                                                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                                <div class="row">
+                                                </div>
+                                                <div class="btn-ground">
+                                                    @if (Session["UserName"] != null)
+                                                    {
+                                                        <button value="Create"  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart </button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
             </div>
         </div>
     </div>
-    <script>
-        function updateTextInput(val, elId) {
-            document.getElementById(elId).value = val;
-        }
-    </script>
+</div>
