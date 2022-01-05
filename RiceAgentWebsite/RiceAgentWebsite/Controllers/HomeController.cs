@@ -8,20 +8,15 @@ namespace RiceAgentWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private RAMS_DBSEntities db = new RAMS_DBSEntities();
-
-        // GET: PRODUCTs
-        public ActionResult Index(string search, string category)
+        public ActionResult Index()
         {
-            if(category == null)
-                return View(db.PRODUCT.Where(x => x.PRODUCT_NAME.Contains(search) || search == null).ToList());
-            else
-                return View(db.PRODUCT.Where(x => x.PRODUCT_NAME.Contains(category)).ToList());
+            return View();
         }
 
-
-        public ActionResult CategorySearch()
+        public ActionResult About()
         {
+            ViewBag.Message = "Your application description page.";
+
             return View();
         }
 

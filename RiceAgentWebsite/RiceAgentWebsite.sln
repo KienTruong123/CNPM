@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiceAgentWebsite", "RiceAgentWebsite\RiceAgentWebsite.csproj", "{6BEDD5ED-6646-4F83-AE84-1274B66CBE27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiceAgentWebsite", "RiceAgentWebsite\RiceAgentWebsite.csproj", "{1DB77775-6381-4F48-A424-4091E05D3CB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6BEDD5ED-6646-4F83-AE84-1274B66CBE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BEDD5ED-6646-4F83-AE84-1274B66CBE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BEDD5ED-6646-4F83-AE84-1274B66CBE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BEDD5ED-6646-4F83-AE84-1274B66CBE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB77775-6381-4F48-A424-4091E05D3CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB77775-6381-4F48-A424-4091E05D3CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB77775-6381-4F48-A424-4091E05D3CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB77775-6381-4F48-A424-4091E05D3CB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B40CC7EA-DA54-4E3C-AA2D-EA9607517DF1}
+		SolutionGuid = {568690BF-945F-42A1-A3C7-608D720DED89}
 	EndGlobalSection
 EndGlobal
