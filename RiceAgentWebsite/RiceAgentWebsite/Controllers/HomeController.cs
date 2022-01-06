@@ -45,8 +45,9 @@ namespace RiceAgentWebsite.Controllers
 
         public ActionResult MyCart(string username)
         {
-            
+            ViewData["CUSTOMER"] = db.CUSTOMER.Where(x => x.USERNAME.Contains(username)).ToList().First();
             return View(db.CART.Where(x => x.USERNAME.Contains(username)).Include(c => c.PRODUCT).ToList());
+
         }
 
         public ActionResult LogOut()
@@ -63,8 +64,6 @@ namespace RiceAgentWebsite.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(ACCOUNT objUser)
@@ -79,6 +78,32 @@ namespace RiceAgentWebsite.Controllers
                 }
             }
             return View(objUser);
+        }
+
+        public ActionResult Buying(string username)
+        {
+            IEnumerable<CART> carts = db.CART.Where(i => i.USERNAME == username);
+            int totalprice = 0;
+            BILL bill = new BILL();
+            bill.TYPEID = 1;
+            bill.STATUS = "Pending";
+            bill.DATE_CREATED = DateTime.Now;
+            bill.CUSTOMERID = db.CUSTOMER.Where(x => x.USERNAME == username).First().CUSTOMERID;
+            BILL_PRODUCTS bILL_PRODUCTS = new BILL_PRODUCTS();
+            foreach (var Item in carts)
+            {
+                bILL_PRODUCTS.PRODUCTID= Item.PRODUCTID;
+                bILL_PRODUCTS.QUANTITY = Item.QUANTITY;
+                bILL_PRODUCTS.PRICE = Item.PRODUCT.PRICE.Value * Item.QUANTITY;
+                bill.BILL_PRODUCTS.Add(bILL_PRODUCTS);
+                totalprice += bILL_PRODUCTS.PRICE.Value;
+                db.CART.Remove(Item);
+            }
+            
+            db.BILL.Add(bill);
+            //and save. done
+            db.SaveChanges(); //important!
+            return RedirectToAction("Index");
         }
 
         public ActionResult UserDashBoard()

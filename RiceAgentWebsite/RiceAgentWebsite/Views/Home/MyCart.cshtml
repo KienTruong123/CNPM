@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<RiceAgentWebsite.Models.CART>
+@using RiceAgentWebsite.Controllers;
 
 @{
     ViewBag.Title = "MyCArt";
+    var total = 0;
+    var shipping = 0;
+    RiceAgentWebsite.Models.CUSTOMER customer = ViewData["CUSTOMER"] as RiceAgentWebsite.Models.CUSTOMER;
 }
 
 <div class="container">
@@ -38,15 +42,18 @@
                                     @Html.DisplayFor(modelItem => item.QUANTITY)
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center"><strong>$@Html.DisplayFor(modelItem => item.PRODUCT.PRICE)</strong></td>
-                                <td class="col-sm-1 col-md-1 text-center"><strong> @{
-                                                                                    var result = item.QUANTITY * item.PRODUCT.PRICE; // Calculate the price
-                                                                                    @result
-                                                                           }</strong>
+                                <td class="col-sm-1 col-md-1 text-center">
+                                    <strong>
+                                        @{
+                                            var result = item.QUANTITY * item.PRODUCT.PRICE; // Calculate the price
+                                            @result
+                                        }
+                                    </strong>
+                                    @{total = total + Convert.ToInt32(result);}
                                 </td>
                                 <td class="col-sm-1 col-md-1">
                                     <button type="button" class="btn btn-danger">
-                                        
-                                        <span class="glyphicon glyphicon-remove">@Html.ActionLink(".", "Delete", "CARTs", new { PRODUCTID = item.PRODUCTID, USERNAME = item.USERNAME })ƒƒƒ</span>
+                                        @Html.ActionLink(".", "Delete", "CARTs", new { username = item.USERNAME.ToString(), productId= item.PRODUCTID }, new { @class = "glyphicon glyphicon-remove" })
                                     </button>
                                 </td>
                             </tr>
@@ -56,21 +63,27 @@
                             <td>   </td>
                             <td>   </td>
                             <td><h5>Subtotal</h5></td>
-                            <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                            <td class="text-right">
+                                <h5>
+                                    <strong>
+                                        @total VND
+                                    </strong>
+                                </h5>
+                            </td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
                             <td><h5>Estimated shipping</h5></td>
-                            <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                            <td class="text-right"><h5><strong>@shipping</strong></h5></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
                             <td><h3>Total</h3></td>
-                            <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                            <td class="text-right"><h3><strong>@{ var final = shipping + total; @final}</strong></h3></td>
                         </tr>
                         <tr>
                             <td>   </td>
@@ -78,18 +91,56 @@
                             <td>   </td>
                             <td>
                                 <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> @Html.ActionLink("Continue Shopping", "Index", "Home")
                                 </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success">
-                                    Checkout <span class="glyphicon glyphicon-play"></span>
-                                </button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#checkout"> Next <span class="glyphicon glyphicon-play"></span></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="modal fade product_view" id="checkout">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6 product_img">
+                                </div>
+                                <div class="col-md-6 product_content">
+                                   
+
+                                    <div class="row">
+                                        <!-- end col -->
+                                        <div class="col-md-4 col-sm-12">
+                                            Địa chỉ:
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            @customer.LOCATION
+                                        </div>
+                                        <!-- end col -->
+                                    </div>
+                                    <div class="row">
+
+                                    </div>
+                                    <div class="btn-ground">
+                                        
+                                        <button type="button" class="btn btn-primary">
+                                           <span class="glyphicon glyphicon-shopping-cart"></span> @Html.ActionLink("Confirm buying", "Buying", "Home", new {username= Session["UserName"] },new {@class= "text-dark" })
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         }
-     </div>
+
+    </div>
 </div>
