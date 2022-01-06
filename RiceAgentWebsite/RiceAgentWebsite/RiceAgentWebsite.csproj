@@ -130,7 +130,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ACCOUNTsController.cs" />
+    <Compile Include="Controllers\BILLsController.cs" />
+    <Compile Include="Controllers\BILL_PRODUCTSController.cs" />
     <Compile Include="Controllers\CARTsController.cs" />
+    <Compile Include="Controllers\CUSTOMERsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PRODUCTsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -262,6 +265,21 @@
     <Content Include="Views\ACCOUNTs\Index.cshtml" />
     <Content Include="Views\Home\MyCart.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\BILLs\Create.cshtml" />
+    <Content Include="Views\BILLs\Delete.cshtml" />
+    <Content Include="Views\BILLs\Details.cshtml" />
+    <Content Include="Views\BILLs\Edit.cshtml" />
+    <Content Include="Views\BILLs\Index.cshtml" />
+    <Content Include="Views\BILL_PRODUCTS\Create.cshtml" />
+    <Content Include="Views\BILL_PRODUCTS\Delete.cshtml" />
+    <Content Include="Views\BILL_PRODUCTS\Details.cshtml" />
+    <Content Include="Views\BILL_PRODUCTS\Edit.cshtml" />
+    <Content Include="Views\BILL_PRODUCTS\Index.cshtml" />
+    <Content Include="Views\CUSTOMERs\Create.cshtml" />
+    <Content Include="Views\CUSTOMERs\Delete.cshtml" />
+    <Content Include="Views\CUSTOMERs\Details.cshtml" />
+    <Content Include="Views\CUSTOMERs\Edit.cshtml" />
+    <Content Include="Views\CUSTOMERs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -60,7 +60,7 @@ namespace RiceAgentWebsite.Controllers
                 }
                 db.CART.Add(cART);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyCart","Home", new {username = cART.USERNAME});
             }
 
             ViewBag.USERNAME = new SelectList(db.ACCOUNT, "USERNAME", "USERNAME", cART.USERNAME);
@@ -97,7 +97,7 @@ namespace RiceAgentWebsite.Controllers
             {
                 db.Entry(cART).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyCart","Home", new {username = cART.USERNAME});
             }
             ViewBag.USERNAME = new SelectList(db.ACCOUNT, "USERNAME", "USERNAME", cART.USERNAME);
             ViewBag.PRODUCTID = new SelectList(db.PRODUCT, "PRODUCTID", "PRODUCT_NAME", cART.PRODUCTID);
@@ -105,33 +105,30 @@ namespace RiceAgentWebsite.Controllers
         }
 
         // GET: CARTs/Delete/5
-        public ActionResult Delete(string username, int productId)
+        public ActionResult Delete(string username, int? productId)
         {
-            if (username == null )
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             CART cART = db.CART
             .Where(i => i.PRODUCTID == productId && i.USERNAME == username)
             .Single();
-            if (cART == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cART);
+            db.CART.Remove(cART);
+            db.SaveChanges();
+
+            return View("../Home/MyCart", db.CART.Where(x => x.USERNAME.Contains(username)).ToList());
         }
 
         // POST: CARTs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string username, int productId)
+        public ActionResult DeleteConfirmed(string username, int? productId)
         {
             CART cart = db.CART
              .Where(i => i.PRODUCTID == productId && i.USERNAME==username)
              .Single();
             db.CART.Remove(cart);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return View("../Home/MyCart", db.CART.Where(x => x.USERNAME.Contains(username)).ToList());
+
         }
 
 
