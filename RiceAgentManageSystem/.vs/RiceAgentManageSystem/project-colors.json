@@ -10,7 +10,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "c1901134-82ea-463e-8498-1a141d7c0f69": {
+      "ProjectGuid": "c1901134-82ea-463e-8498-1a141d7c0f69",
+      "DisplayName": "RiceAgentManageSystemTests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

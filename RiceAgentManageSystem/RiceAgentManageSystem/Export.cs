@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,7 +120,42 @@ namespace RiceAgentManageSystem
             int rows = cmd.ExecuteNonQuery();
 
             gridDetail.ClearSelection();
+            writeFile(bid);
+            MessageBox.Show("Bill has been exported through csv file");
             LoadBill();
+        }
+
+        private void writeFile(int bid)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand(
+                    "Select * from BILL_PRODUCTS WHERE BILLID=" + bid, conn);
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+
+                string fileName = "EXPORT_BILL.csv";
+                StreamWriter sw = new StreamWriter(fileName);
+                object[] output = new object[reader.FieldCount];
+
+                for (int i = 0; i < reader.FieldCount; i++)
+                    output[i] = reader.GetName(i);
+
+                sw.WriteLine(string.Join(",", output));
+
+                while (reader.Read())
+                {
+                    reader.GetValues(output);
+                    sw.WriteLine(string.Join(",", output));
+                }
+
+                sw.Close();
+                reader.Close();
+            }
+            catch(IOException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void btnClosed_Click(object sender, EventArgs e)
