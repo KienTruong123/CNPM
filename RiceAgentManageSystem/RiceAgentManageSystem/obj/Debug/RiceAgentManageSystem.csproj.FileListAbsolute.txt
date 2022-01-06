@@ -28,3 +28,11 @@ D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSys
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ProductForm.resources
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Statistic.resources
 D:\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.StaffManage.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.AccountantForm.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.AdminForm.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Export.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Import.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.LoginForm.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.ProductForm.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.StaffManage.resources
+C:\Users\nguyen\Documents\GitHub\CNPM\RiceAgentManageSystem\RiceAgentManageSystem\obj\Debug\RiceAgentManageSystem.Statistic.resources

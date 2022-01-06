@@ -39,10 +39,44 @@ namespace RiceAgentManageSystem
         {
             string username = tbUsername.Text;
             string password = tbPassword.Text;
-            if (username == null || password == null)
+            int result=login(username, password);
+            if (result==-1)
             {
                 MessageBox.Show("Please fill in all information");
                 clearData();
+            }
+            else
+            {        
+                if (result==1)
+                {
+                    Session.SessionRole = 1;
+                    AdminForm f2 = new AdminForm();
+                    this.Hide();
+                    f2.ShowDialog();
+                    this.Close();
+                }
+                else if(result==3)
+                {
+                    Session.SessionRole = 3;
+                    AccountantForm f3 = new AccountantForm();
+                    this.Hide();
+                    f3.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("You don't have permission to access this feature.");
+                    clearData();
+                }    
+            }
+        }
+
+        public int login(string username, string password)
+        {
+        
+            if (username == null || password == null)
+            {
+                return -1;
             }
             else
             {
@@ -61,41 +95,15 @@ namespace RiceAgentManageSystem
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
-
+                conn.Close();
                 if (dt.Rows.Count > 0)
                 {
-                    uid = dt.Rows[0]["ROLEID"].ToString();
-
-                    if (uid.Equals("1"))
-                    {
-                        Session.SessionRole = 1;
-                        AdminForm f2 = new AdminForm();
-                        this.Hide();
-                        f2.ShowDialog();
-                        this.Close();
-                    }
-                    else if(uid.Equals("3"))
-                    {
-                        Session.SessionRole = 3;
-                        AccountantForm f3 = new AccountantForm();
-                        this.Hide();
-                        f3.ShowDialog();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("You don't have permission to access this feature.");
-                        clearData();
-                    }
-
+                    return Int32.Parse(dt.Rows[0]["ROLEID"].ToString());
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Username or Password. Please try again");
-                    clearData();
-
-                }
-                conn.Close();
+                    return -1;
+                }        
             }
         }
 
