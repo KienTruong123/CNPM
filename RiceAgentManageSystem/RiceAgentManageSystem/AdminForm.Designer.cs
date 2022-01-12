@@ -38,9 +38,10 @@
             // btnStatistic
             // 
             this.btnStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistic.Location = new System.Drawing.Point(139, 328);
+            this.btnStatistic.Location = new System.Drawing.Point(185, 410);
+            this.btnStatistic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStatistic.Name = "btnStatistic";
-            this.btnStatistic.Size = new System.Drawing.Size(470, 79);
+            this.btnStatistic.Size = new System.Drawing.Size(627, 99);
             this.btnStatistic.TabIndex = 7;
             this.btnStatistic.Text = "STATISTICS";
             this.btnStatistic.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1004, 529);
+            this.btnExit.Location = new System.Drawing.Point(1339, 661);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(348, 79);
+            this.btnExit.Size = new System.Drawing.Size(464, 99);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@
             // btnExport
             // 
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(762, 170);
+            this.btnExport.Location = new System.Drawing.Point(1016, 212);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(470, 79);
+            this.btnExport.Size = new System.Drawing.Size(627, 99);
             this.btnExport.TabIndex = 5;
             this.btnExport.Text = "EXPORT BILL MANAGEMENT";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@
             // btnImport
             // 
             this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.Location = new System.Drawing.Point(139, 170);
+            this.btnImport.Location = new System.Drawing.Point(185, 212);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(470, 79);
+            this.btnImport.Size = new System.Drawing.Size(627, 99);
             this.btnImport.TabIndex = 4;
             this.btnImport.Text = "IMPORT BILL MANAGEMENT";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -82,9 +86,10 @@
             // btnStaffM
             // 
             this.btnStaffM.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStaffM.Location = new System.Drawing.Point(762, 328);
+            this.btnStaffM.Location = new System.Drawing.Point(1016, 410);
+            this.btnStaffM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStaffM.Name = "btnStaffM";
-            this.btnStaffM.Size = new System.Drawing.Size(470, 79);
+            this.btnStaffM.Size = new System.Drawing.Size(627, 99);
             this.btnStaffM.TabIndex = 8;
             this.btnStaffM.Text = "STAFF MANAGEMENT";
             this.btnStaffM.UseVisualStyleBackColor = true;
@@ -92,16 +97,18 @@
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1377, 634);
+            this.ClientSize = new System.Drawing.Size(1836, 792);
             this.Controls.Add(this.btnStaffM);
             this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnImport);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AdminForm";
             this.Text = "AdminForm";
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
 
         }

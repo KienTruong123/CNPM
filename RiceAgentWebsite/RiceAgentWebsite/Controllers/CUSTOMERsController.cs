@@ -106,6 +106,7 @@ namespace RiceAgentWebsite.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(cUSTOMER);
         }
 

@@ -112,5 +112,10 @@ namespace RiceAgentManageSystem
             tbUsername.Text = "";
             tbPassword.Text = "";
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

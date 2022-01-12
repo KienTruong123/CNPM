@@ -2,6 +2,8 @@
 using RiceAgentManageSystem;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,17 @@ namespace RiceAgentManageSystem.Tests
     [TestClass()]
     public class LoginFormTests
     {
-        
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConn"].ConnectionString);
+
+        public void insertSQLCOMMAND(string query)
+        {
+            try { conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int row = cmd.ExecuteNonQuery();
+            }
+            catch { }         
+            conn.Close();   
+        }
 
         [DataTestMethod()]
         [DataRow("admin","123456",1)]

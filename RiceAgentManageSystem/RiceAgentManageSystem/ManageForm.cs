@@ -16,5 +16,10 @@ namespace RiceAgentManageSystem
         {
             InitializeComponent();
         }
+
+        private void ManageForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

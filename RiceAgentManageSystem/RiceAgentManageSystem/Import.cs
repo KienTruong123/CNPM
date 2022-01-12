@@ -146,55 +146,66 @@ namespace RiceAgentManageSystem
             int price = int.Parse(tbPrice.Text.ToString());
             int quan = int.Parse(tbQuantity.Text.ToString());
             int bid = int.Parse(tbBID.Text.ToString());
-            SqlCommand cmd = new SqlCommand("INSERT INTO BILL_PRODUCTS(BILLID,PRODUCTID,PRICE,QUANTITY) VALUES (@bid,@oid,@pr,@q)", conn);
-
-            SqlParameter p1 = new SqlParameter("@bid", bid);
-            SqlParameter p2 = new SqlParameter("@oid", oid);
-            SqlParameter p3 = new SqlParameter("@pr", price);
-            SqlParameter p4 = new SqlParameter("@q", quan);
-            SqlParameter[] ps = { p1, p2,p3,p4 };
-
-            cmd.Parameters.AddRange(ps);
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+            addBill(bid, oid, quan, price); 
 
             LoadData();
             clearDetail();
             SetEditingMode(false);
 
-            dt.Dispose();
+            
             //conn.Close();
         }
+
+        public bool addBill(int bid, int pid, int quantity, int price)
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO BILL_PRODUCTS(BILLID,PRODUCTID,PRICE,QUANTITY) VALUES (@bid,@oid,@pr,@q)", conn);
+            SqlParameter p1 = new SqlParameter("@bid", bid);
+            SqlParameter p2 = new SqlParameter("@oid", pid);
+            SqlParameter p3 = new SqlParameter("@pr", price);
+            SqlParameter p4 = new SqlParameter("@q", quantity);
+            SqlParameter[] ps = { p1, p2, p3, p4 };
+            cmd.Parameters.AddRange(ps);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            int rows = adapter.Fill(dt);
+            conn.Close();
+            dt.Dispose();
+            return rows==0;
+        }
+
+
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int index = gridDetail.SelectedCells[0].RowIndex;
             DataGridViewRow row = gridDetail.Rows[index];
             int pid = int.Parse(row.Cells[0].Value.ToString());
-
-
-            //conn.Open();
-            SqlCommand cmd = new SqlCommand("update  BILL_PRODUCTS set QUANTITY=@q, PRICE=@p where BILLID=@bid AND PRODUCTID= @pid", conn);
-
-            SqlParameter param1 = new SqlParameter("@q", int.Parse(tbQuantity.Text.ToString()));
-            SqlParameter param2 = new SqlParameter("@p", int.Parse(tbPrice.Text.ToString()));
-            SqlParameter param4 = new SqlParameter("@pid", pid);
-            SqlParameter param5 = new SqlParameter("@bid", int.Parse(tbBID.Text.ToString()));
-
-            SqlParameter[] parameters = { param1, param2, param4, param5 }; // you may add more params
-
-            cmd.Parameters.AddRange(parameters);
-            int rows = cmd.ExecuteNonQuery();
-
+            int quantity = int.Parse(tbQuantity.Text.ToString());
+            int price = int.Parse(tbPrice.Text.ToString());
+            int bid = int.Parse(tbBID.Text.ToString());
+            updateBill(bid, pid, quantity, price);
             gridDetail.ClearSelection();
             LoadData();
             clearDetail();
             SetEditingMode(false);
-
-            ////conn.Close();
         }
+
+        public bool updateBill( int bid, int pid, int quantity, int price)
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update  BILL_PRODUCTS set QUANTITY=@q, PRICE=@p where BILLID=@bid AND PRODUCTID= @pid", conn);
+            SqlParameter param1 = new SqlParameter("@q", quantity);
+            SqlParameter param2 = new SqlParameter("@p", price);
+            SqlParameter param4 = new SqlParameter("@pid", pid);
+            SqlParameter param5 = new SqlParameter("@bid", bid);
+            SqlParameter[] parameters = { param1, param2, param4, param5 }; // you may add more params
+            cmd.Parameters.AddRange(parameters);
+            int rows = cmd.ExecuteNonQuery();
+            conn.Close();
+            return rows == 1;
+        }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -237,18 +248,16 @@ namespace RiceAgentManageSystem
             //conn.Close();
         }
 
-        private bool DeleleById(int bid, int pid)
+        public bool DeleleById(int bid, int pid)
         {
-            //conn.Open();
+            conn.Open();
             SqlCommand cmd = new SqlCommand("delete from BILL_PRODUCTS where BILLID = @bid AND PRODUCTID = @pid", conn);
-
             SqlParameter param1 = new SqlParameter("@bid", bid);
             SqlParameter param2 = new SqlParameter("@pid", pid);
             SqlParameter[] parameters = { param1, param2 };
-
             cmd.Parameters.AddRange(parameters);
             int rows = cmd.ExecuteNonQuery();
-            //conn.Close();
+            conn.Close();
 
             return rows == 1;
         }

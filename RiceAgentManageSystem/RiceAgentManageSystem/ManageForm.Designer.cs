@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1964, 949);
             this.Name = "ManageForm";
             this.Text = "ManageForm";
+            this.Load += new System.EventHandler(this.ManageForm_Load);
             this.ResumeLayout(false);
 
         }
