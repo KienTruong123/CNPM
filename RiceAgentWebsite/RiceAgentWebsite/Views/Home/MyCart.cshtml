@@ -108,27 +108,38 @@
                             <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6 product_img">
-                                </div>
-                                <div class="col-md-6 product_content">
-                                   
+                            <div class="row">                         
+                                <div class="col-md-12 product_content">
+                                    <div class="row">
+                                        <!-- end col -->
+                                        <div class="col-md-4 col-sm-12">
+                                            Họ tên người nhận:
+                                        </div>
+                                        <div class="col-md-8 col-sm-12">
+                                            <input value="@customer.USERNAME" type="text" name="name" />
+                                        </div>
+                                        <!-- end col -->
+                                    </div>
 
                                     <div class="row">
                                         <!-- end col -->
                                         <div class="col-md-4 col-sm-12">
                                             Địa chỉ:
                                         </div>
-                                        <div class="col-md-4 col-sm-12">
-                                            @customer.LOCATION
+                                        <div class="col-md-8 col-sm-12">
+                                            <input value="@customer.LOCATION" type="text" name="address" />                                            
                                         </div>
                                         <!-- end col -->
                                     </div>
                                     <div class="row">
-
+                                        <div class="col-md-4 col-sm-12">
+                                            Sđt : 
+                                        </div>
+                                        <div class="col-md-8 col-sm-12">
+                                            <input type="number" name="phonenumber" value="@customer.PHONE" />
+                                        </div>
                                     </div>
-                                    <div class="btn-ground">
-                                        
+                                    <div class="btn-ground">                                       
                                         <button type="button" class="btn btn-primary">
                                            <span class="glyphicon glyphicon-shopping-cart"></span> @Html.ActionLink("Confirm buying", "Buying", "Home", new {username= Session["UserName"] },new {@class= "text-dark" })
                                         </button>

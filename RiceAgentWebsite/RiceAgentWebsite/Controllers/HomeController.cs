@@ -47,7 +47,6 @@ namespace RiceAgentWebsite.Controllers
         {
             ViewData["CUSTOMER"] = db.CUSTOMER.Where(x => x.USERNAME.Contains(username)).ToList().First();
             return View(db.CART.Where(x => x.USERNAME.Contains(username)).Include(c => c.PRODUCT).ToList());
-
         }
 
         public ActionResult LogOut()

@@ -129,7 +129,6 @@ namespace RiceAgentWebsite.Controllers
             db.SaveChanges();
             ViewData["CUSTOMER"] = db.CUSTOMER.Where(x => x.USERNAME.Contains(username)).ToList().First();
             return View("../Home/MyCart", db.CART.Where(x => x.USERNAME.Contains(username)).ToList());
-
         }
 
         protected override void Dispose(bool disposing)
